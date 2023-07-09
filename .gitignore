@@ -1,1 +1,3 @@
 CMakeFiles/
+src/sycl-init/Makefile
+src/sycl-init/cmake_install.cmake
