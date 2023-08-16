@@ -14,6 +14,9 @@ RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRO
 RUN apt-get install -y intel-basekit=2023.0.0-25537 && \
 apt-get install -y --allow-downgrades intel-oneapi-compiler-dpcpp-cpp=2023.0.0-25370
 
+RUN apt-get -y install libgtest-dev && \
+    cd /usr/src/gtest && \
+    cmake . && make && \
+    cp ./lib/*.a /usr/lib
+
 COPY oneapi-for-nvidia-gpus-2023.0.0-linux.sh /opt
-RUN bash /opt/oneapi-for-nvidia-gpus-2023.0.0-linux.sh && \
-    . /opt/intel/oneapi/setvars.sh --include-intel-llvm
